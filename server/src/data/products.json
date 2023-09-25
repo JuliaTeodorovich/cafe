@@ -1,0 +1,172 @@
+{
+  "pizza": [
+    {
+      "name": "Margarita",
+      "id": "margarita",
+      "price_small": 200,
+      "price_big": 250,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Napoletana",
+      "id": "napoletana",
+      "price_small": 250,
+      "price_big": 320,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Vegetariana",
+      "id": "vegetariana",
+      "price_small": 180,
+      "price_big": 220,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Americana",
+      "id": "americana",
+      "price_small": 210,
+      "price_big": 260,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Four Cheese",
+      "id": "fourcheese",
+      "price_small": 240,
+      "price_big": 310,
+      "size": "",
+      "toppings": [{}, {}]
+    }
+  ],
+  "burgers": [
+    {
+      "name": "Hamburger",
+      "id": "hamburger",
+      "price_small": 200,
+      "price_big": 250,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Cheeseburger",
+      "id": "cheeseburgerr",
+      "price_small": 60,
+      "price_big": 70,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Fishburger",
+      "id": "fishburger",
+      "price_small": 65,
+      "price_big": 75,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Blackburger",
+      "id": "blackburger",
+      "price_small": 70,
+      "price_big": 80,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Doubleburger",
+      "id": "doubleburger",
+      "price_small": 85,
+      "price_big": 100,
+      "size": "",
+      "toppings": [{}, {}]
+    }
+  ],
+  "doner": [
+    {
+      "name": "Doner",
+      "id": "doner",
+      "price_small": 60,
+      "price_big": 80,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Doner kebab",
+      "id": "donerkebab",
+      "price_small": 70,
+      "price_big": 90,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Burrito",
+      "id": "burrito",
+      "price_small": 70,
+      "price_big": 90,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Tacos",
+      "id": "tacos",
+      "price_small": 80,
+      "price_big": 100,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Gyros",
+      "id": "gyros",
+      "price_small": 80,
+      "price_big": 100,
+      "size": "",
+      "toppings": [{}, {}]
+    }
+  ],
+  "beverages": [
+    {
+      "name": "Coca-cola",
+      "id": "cola",
+      "price_small": 15,
+      "price_big": 25,
+      "size": ""
+    },
+    {
+      "name": "Fanta",
+      "id": "fanta",
+      "price_small": 15,
+      "price_big": 25,
+      "size": ""
+    },
+    {
+      "name": "Mojito",
+      "id": "mojito",
+      "price_small": 25,
+      "price_big": 40,
+      "size": ""
+    },
+    {
+      "name": "Water",
+      "id": "water",
+      "price_small": 10,
+      "price_big": 15,
+      "size": ""
+    },
+    {
+      "name": "Black coffee",
+      "id": "blackburger",
+      "price_small": 20,
+      "price_big": 30,
+      "size": ""
+    },
+    {
+      "name": "Latte",
+      "id": "latte",
+      "price_small": 35,
+      "price_big": 50,
+      "size": ""
+    }
+  ]
+}
