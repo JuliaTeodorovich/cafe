@@ -1,3 +1,60 @@
 body {
-    background-color: black;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgb(247, 245, 245) 0%,
+    rgb(240, 239, 238) 100%
+  );
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.header {
+  color: grey;
+  margin: 50px;
+  font-size: 50px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  margin: 3px;
+  background-color: rgb(223, 228, 212);
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.active {
+  background-color: rgb(154, 209, 153);
+}
+
+.products {
+  width: 70%;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title,
+.product-title {
+  cursor: pointer;
 }

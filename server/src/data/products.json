@@ -39,6 +39,14 @@
       "price_big": 310,
       "size": "",
       "toppings": [{}, {}]
+    },
+    {
+      "name": "Siciliana",
+      "id": "siciliana",
+      "price_small": 230,
+      "price_big": 300,
+      "size": "",
+      "toppings": [{}, {}]
     }
   ],
   "burgers": [
@@ -63,6 +71,14 @@
       "id": "fishburger",
       "price_small": 65,
       "price_big": 75,
+      "size": "",
+      "toppings": [{}, {}]
+    },
+    {
+      "name": "Chickenburger",
+      "id": "chickenburger",
+      "price_small": 55,
+      "price_big": 65,
       "size": "",
       "toppings": [{}, {}]
     },
@@ -123,6 +139,14 @@
       "price_big": 100,
       "size": "",
       "toppings": [{}, {}]
+    },
+    {
+      "name": "Cheese Pita",
+      "id": "cheesepita",
+      "price_small": 40,
+      "price_big": 50,
+      "size": "",
+      "toppings": [{}, {}]
     }
   ],
   "beverages": [
@@ -145,6 +169,13 @@
       "id": "mojito",
       "price_small": 25,
       "price_big": 40,
+      "size": ""
+    },
+    {
+      "name": "Juice",
+      "id": "juice",
+      "price_small": 20,
+      "price_big": 30,
       "size": ""
     },
     {

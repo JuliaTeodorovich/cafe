@@ -1,6 +1,8 @@
 const path = require("path");
+const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
+require("dotenv").config();
 
 module.exports = {
   mode: "production",
@@ -27,6 +29,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.EnvironmentPlugin(["PORT"]),
     new ESLintPlugin(),
     new HTMLWebpackPlugin({
       template: "./src/index.html",
