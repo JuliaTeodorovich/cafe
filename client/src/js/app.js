@@ -1,4 +1,5 @@
 import "../scss/main.scss";
+import "../img";
 import { API_CATEGORIES_LIST, API_PRODUCTS_BY_CATEGORY_ID } from "./urls";
 import { createElement } from "./helpers/domHelpers";
 
@@ -22,7 +23,6 @@ fetch(API_CATEGORIES_LIST)
         if (currentlyActiveCard) {
           currentlyActiveCard.classList.remove("active");
         }
-        console.log(currentlyActiveCard);
         cardElement.classList.add("active");
         const categoryId = category.id;
         displayProductsByCategory(categoryId);
@@ -40,33 +40,52 @@ function displayProductsByCategory(categoryId) {
     .then((products) => {
       $products.innerHTML = "";
       for (let product of products) {
-        const productElement = createElement("div", { class: "product" });
+        const productElement = createElement(
+          "div",
+          { class: "product" },
+          "",
+          $products
+        );
+        const imgElement = createElement(
+          "img",
+          { class: "product-img", src: `./img/${product.id}.jpg` },
+          "",
+          productElement
+        );
         const titleElement = createElement(
           "h4",
           { class: "product-title" },
           product.name,
           productElement
         );
+        const choosePrice = createElement(
+          "div",
+          { class: "choose-price" },
+          "",
+          productElement
+        );
         const priceElement1 = createElement(
           "p",
           { class: "product-price" },
           `small: ${product.price_small}₴`,
-          productElement
+          choosePrice
         );
         const priceElement2 = createElement(
           "p",
           { class: "product-price" },
           `big: ${product.price_big}₴`,
-          productElement
+          choosePrice
         );
         productElement.addEventListener("click", () => {
           displayProductDetails(product);
         });
 
-        $products.appendChild(productElement);
+        productElement.appendChild(imgElement);
         productElement.appendChild(titleElement);
-        productElement.appendChild(priceElement1);
-        productElement.appendChild(priceElement2);
+        productElement.appendChild(choosePrice);
+        choosePrice.appendChild(priceElement1);
+        choosePrice.appendChild(priceElement2);
+        $products.appendChild(productElement);
       }
     });
 }

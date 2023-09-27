@@ -7,6 +7,17 @@ body {
   );
 }
 
+@media screen and (max-width: 768px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    font-size: 90%;
+    margin: 4px;
+  }  
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -29,6 +40,7 @@ main {
 .card {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 25%;
   margin: 3px;
   background-color: rgb(223, 228, 212);
@@ -43,6 +55,7 @@ main {
 
 .products {
   width: 70%;
+  max-width: 720px;
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -52,6 +65,24 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px;
+}
+
+.choose-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.product-price {
+  margin: 4px;
+  &:nth-child(1) {
+    &::after {
+      content: "/";
+      margin-left: 7px;
+      color: red;
+    }
+  }
 }
 
 .title,
