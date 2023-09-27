@@ -1,6 +1,9 @@
 import "../scss/main.scss";
-import "../img";
-import { API_CATEGORIES_LIST, API_PRODUCTS_BY_CATEGORY_ID } from "./urls";
+import {
+  API_CATEGORIES_LIST,
+  API_PRODUCTS_BY_CATEGORY_ID,
+  API_TOPPINGS_LIST,
+} from "./urls";
 import { createElement } from "./helpers/domHelpers";
 
 const $categories = document.querySelector(".categories");
@@ -48,7 +51,10 @@ function displayProductsByCategory(categoryId) {
         );
         const imgElement = createElement(
           "img",
-          { class: "product-img", src: `./img/${product.id}.jpg` },
+          {
+            class: "product-img",
+            // src: `../img/${product.id}.jpg`,
+          },
           "",
           productElement
         );
@@ -76,8 +82,16 @@ function displayProductsByCategory(categoryId) {
           `big: ${product.price_big}₴`,
           choosePrice
         );
-        productElement.addEventListener("click", () => {
+        priceElement1.addEventListener("click", () => {
+          product.size = priceElement1.textContent;
           displayProductDetails(product);
+          addToppings();
+        });
+
+        priceElement2.addEventListener("click", () => {
+          product.size = priceElement1.textContent;
+          displayProductDetails(product);
+          addToppings();
         });
 
         productElement.appendChild(imgElement);
@@ -100,11 +114,29 @@ function displayProductDetails(product) {
   );
   const descriptionElement = createElement(
     "p",
-    { class: "product-description" },
-    product.description
+    { class: "product-size" },
+    product.size
   );
 
-  console.log();
   $products.appendChild(titleElement);
   $products.appendChild(descriptionElement);
+}
+
+function addToppings() {
+  fetch(API_TOPPINGS_LIST)
+    .then((res) => res.json())
+    .then((toppings) => {
+      for (let topping of toppings) {
+        const cardElement = createElement("div", { class: "card" });
+        const titleElement = createElement(
+          "h3",
+          { class: "title" },
+          topping.name
+        );
+        cardElement.addEventListener("click", () => {
+        });
+        cardElement.appendChild(titleElement);
+        $products.appendChild(cardElement);
+      }
+    });
 }

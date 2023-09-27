@@ -6,7 +6,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 require("dotenv").config({ path: ".env" });
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: "./src/js/app.js",
   devtool: "source-map",
   output: {
@@ -24,6 +24,16 @@ module.exports = {
           options: {
             presets: ["@babel/preset-env"],
             plugins: ["@babel/plugin-proposal-object-rest-spread"],
+          },
+        },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: 'img/',
           },
         },
       },
@@ -45,7 +55,7 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     compress: true,
-    port: 3000,
+    port: process.env.BROWSER,
     liveReload: true,
     https: true,
   },

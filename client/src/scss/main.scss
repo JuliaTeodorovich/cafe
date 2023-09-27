@@ -68,6 +68,10 @@ main {
   margin: 10px;
 }
 
+.product-img {
+  width: 70px;
+}
+
 .choose-price {
   display: flex;
   flex-direction: row;
@@ -86,6 +90,6 @@ main {
 }
 
 .title,
-.product-title {
+.product-price {
   cursor: pointer;
 }

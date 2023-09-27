@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const categories = require("./data/categories.json");
 const products = require("./data/products.json");
-// const imgs = require("./data/img.json");
+const toppings = require("./data/toppings.json");
 const { PORT } = require("dotenv").config().parsed;
 
 const app = express();
@@ -21,8 +21,8 @@ app.get("/api/products/:category", function (request, response) {
   response.send(200, productsByCategory);
 });
 
-// app.get("/api/imgs", function (request, response) {
-//   response.send(200, imgs);
-// });
+app.get("/api/toppings", function (request, response) {
+  response.send(200, toppings);
+});
 
 app.listen(PORT);

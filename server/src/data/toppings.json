@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Cheese",
+    "id": "cheese",
+    "price": 10
+  },
+  {
+    "name": "Tomato",
+    "id": "tomato",
+    "price": 8
+  },
+  {
+    "name": "Salad",
+    "id": "salad",
+    "price": 7
+  },
+  {
+    "name": "Cucumber",
+    "id": "cucumber",
+    "price": 5
+  },
+  {
+    "name": "Mayonnaise",
+    "id": "mayonnaise",
+    "price": 5
+  },
+  {
+    "name": "Olives",
+    "id": "olives",
+    "price": 10
+  },
+  {
+    "name": "Bacon",
+    "id": "bacon",
+    "price": 15
+  },
+  {
+    "name": "Mushrooms",
+    "id": "mushrooms",
+    "price": 12
+  }
+]
