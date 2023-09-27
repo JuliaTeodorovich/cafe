@@ -10,10 +10,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.get("/api/port", (req, res) => {
-//   res.json({ port: PORT });
-// });
-
 app.get("/api/categories", function (request, response) {
   response.send(200, categories);
 });

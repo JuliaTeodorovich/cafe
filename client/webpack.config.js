@@ -2,7 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
-require("dotenv").config();
+
+require("dotenv").config({ path: ".env" });
 
 module.exports = {
   mode: "production",
