@@ -45,8 +45,6 @@ function createElement(tagName, attributes, content, eventHandlers, parent) {
   return element;
 }
 
-// export function createCheckoutForm() {}
-
 /***/ }),
 
 /***/ "./src/js/urls.js":
@@ -87,7 +85,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `body {
+___CSS_LOADER_EXPORT___.push([module.id, `@charset "UTF-8";
+body {
   background: rgb(255, 255, 255);
   background: radial-gradient(circle, rgb(247, 245, 245) 0%, rgb(240, 239, 238) 100%);
 }
@@ -174,7 +173,44 @@ main {
 .title,
 .product-price {
   cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/scss/main.scss"],"names":[],"mappings":"AAAA;EACE,8BAAA;EACA,mFAAA;AACF;;AAMA;EACE;;;;;IAKE,cAAA;IACA,WAAA;EAHF;AACF;AAMA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,UAAA;EACA,cAAA;AAJF;;AAOA;EACE,WAAA;EACA,YAAA;EACA,eAAA;AAJF;;AAOA;EACE,aAAA;EACA,mBAAA;AAJF;;AAOA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,UAAA;EACA,WAAA;EACA,oCAAA;AAJF;AAKE;EACE,YAAA;AAHJ;;AAOA;EACE,yBAAA;AAJF;;AAOA;EACE,UAAA;EACA,gBAAA;EACA,gBAAA;EACA,aAAA;EACA,2DAAA;AAJF;;AAOA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,YAAA;AAJF;;AAOA;EACE,WAAA;AAJF;;AAOA;EACE,aAAA;EACA,mBAAA;EACA,6BAAA;AAJF;;AAOA;EACE,WAAA;AAJF;AAMI;EACE,YAAA;EACA,gBAAA;EACA,UAAA;AAJN;;AASA;;EAEE,eAAA;AANF","sourcesContent":["body {\r\n  background: rgb(255, 255, 255);\r\n  background: radial-gradient(\r\n    circle,\r\n    rgb(247, 245, 245) 0%,\r\n    rgb(240, 239, 238) 100%\r\n  );\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  h1,\r\n  h2,\r\n  h3,\r\n  h4,\r\n  p {\r\n    font-size: 90%;\r\n    margin: 4px;\r\n  }  \r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  width: 80%;\r\n  margin: 0 auto;\r\n}\r\n\r\n.header {\r\n  color: grey;\r\n  margin: 50px;\r\n  font-size: 50px;\r\n}\r\n\r\n.categories {\r\n  display: flex;\r\n  flex-direction: row;\r\n}\r\n\r\n.card {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 25%;\r\n  margin: 3px;\r\n  background-color: rgb(223, 228, 212);\r\n  &:hover {\r\n    opacity: 0.8;\r\n  }\r\n}\r\n\r\n.active {\r\n  background-color: #b7b7a4;\r\n}\r\n\r\n.products {\r\n  width: 70%;\r\n  max-width: 720px;\r\n  margin-top: 50px;\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\r\n}\r\n\r\n.product {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin: 10px;\r\n}\r\n\r\n.product-img {\r\n  width: 70px;\r\n}\r\n\r\n.choose-price {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n}\r\n\r\n.product-price {\r\n  margin: 4px;\r\n  &:nth-child(1) {\r\n    &::after {\r\n      content: \"/\";\r\n      margin-left: 7px;\r\n      color: red;\r\n    }\r\n  }\r\n}\r\n\r\n.title,\r\n.product-price {\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+[id^=c] {
+  display: none;
+}
+
+[id^=c] + label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid green;
+  margin-left: 10px;
+  text-align: center;
+}
+
+[id^=c] + label:before {
+  content: "✓";
+  display: inline-block;
+  color: green;
+  font-size: 20px;
+  line-height: 20px;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+[id^=c]:checked + label:before {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}`, "",{"version":3,"sources":["webpack://./src/scss/main.scss"],"names":[],"mappings":"AAAA,gBAAgB;AAAhB;EACE,8BAAA;EACA,mFAAA;AAEF;;AAKA;EACE;;;;;IAKE,cAAA;IACA,WAAA;EAFF;AACF;AAKA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,UAAA;EACA,cAAA;AAHF;;AAMA;EACE,WAAA;EACA,YAAA;EACA,eAAA;AAHF;;AAMA;EACE,aAAA;EACA,mBAAA;AAHF;;AAMA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,UAAA;EACA,WAAA;EACA,oCAAA;AAHF;AAIE;EACE,YAAA;AAFJ;;AAMA;EACE,yBAAA;AAHF;;AAMA;EACE,UAAA;EACA,gBAAA;EACA,gBAAA;EACA,aAAA;EACA,2DAAA;AAHF;;AAMA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,YAAA;AAHF;;AAMA;EACE,WAAA;AAHF;;AAMA;EACE,aAAA;EACA,mBAAA;EACA,6BAAA;AAHF;;AAMA;EACE,WAAA;AAHF;AAKI;EACE,YAAA;EACA,gBAAA;EACA,UAAA;AAHN;;AAQA;;EAEE,eAAA;AALF;;AAQA;EACE,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,gBAAA;AALF;;AAQA;EACE,aAAA;AALF;;AAOA;EACE,cAAA;EACA,WAAA;EACA,YAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;AAJF;;AAMA;EACE,YAAA;EACA,qBAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;EACA,2BAAA;EACA,mBAAA;EACA,wBAAA;EACA,gBAAA;AAHF;;AAKA;EACE,2BAAA;EACA,mBAAA;AAFF","sourcesContent":["body {\r\n  background: rgb(255, 255, 255);\r\n  background: radial-gradient(\r\n    circle,\r\n    rgb(247, 245, 245) 0%,\r\n    rgb(240, 239, 238) 100%\r\n  );\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  h1,\r\n  h2,\r\n  h3,\r\n  h4,\r\n  p {\r\n    font-size: 90%;\r\n    margin: 4px;\r\n  }\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  width: 80%;\r\n  margin: 0 auto;\r\n}\r\n\r\n.header {\r\n  color: grey;\r\n  margin: 50px;\r\n  font-size: 50px;\r\n}\r\n\r\n.categories {\r\n  display: flex;\r\n  flex-direction: row;\r\n}\r\n\r\n.card {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 25%;\r\n  margin: 3px;\r\n  background-color: rgb(223, 228, 212);\r\n  &:hover {\r\n    opacity: 0.8;\r\n  }\r\n}\r\n\r\n.active {\r\n  background-color: #b7b7a4;\r\n}\r\n\r\n.products {\r\n  width: 70%;\r\n  max-width: 720px;\r\n  margin-top: 50px;\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\r\n}\r\n\r\n.product {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin: 10px;\r\n}\r\n\r\n.product-img {\r\n  width: 70px;\r\n}\r\n\r\n.choose-price {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n}\r\n\r\n.product-price {\r\n  margin: 4px;\r\n  &:nth-child(1) {\r\n    &::after {\r\n      content: \"/\";\r\n      margin-left: 7px;\r\n      color: red;\r\n    }\r\n  }\r\n}\r\n\r\n.title,\r\n.product-price {\r\n  cursor: pointer;\r\n}\r\n\r\n.info {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-top: 40px;\r\n}\r\n\r\n[id^=\"c\"] {\r\n  display: none;\r\n}\r\n[id^=\"c\"] + label {\r\n  display: block;\r\n  width: 20px;\r\n  height: 20px;\r\n  border: 1px solid green;\r\n  margin-left: 10px;\r\n  text-align: center;\r\n}\r\n[id^=\"c\"] + label:before {\r\n  content: \"\\2713\";\r\n  display: inline-block;\r\n  color: green;\r\n  font-size: 20px;\r\n  line-height: 20px;\r\n  -webkit-transform: scale(0);\r\n  transform: scale(0);\r\n  -webkit-transition: 0.3s;\r\n  transition: 0.3s;\r\n}\r\n[id^=\"c\"]:checked + label:before {\r\n  -webkit-transform: scale(1);\r\n  transform: scale(1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -712,7 +748,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var $categories = document.querySelector(".categories");
 var $products = document.querySelector(".products");
-// const $info = document.querySelector(".info");
+var $info = document.querySelector(".info");
 // const $cart = document.querySelector(".cart");
 
 fetch(_urls__WEBPACK_IMPORTED_MODULE_1__.API_CATEGORIES_LIST).then(function (res) {
@@ -756,6 +792,8 @@ function displayProductsByCategory(categoryId) {
     return res.json();
   }).then(function (products) {
     $products.innerHTML = "";
+    $products.style.display = "grid";
+    $info.style.display = "none";
     var _iterator2 = _createForOfIteratorHelper(products),
       _step2;
     try {
@@ -765,8 +803,8 @@ function displayProductsByCategory(categoryId) {
           "class": "product"
         }, "", $products);
         var imgElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("img", {
-          "class": "product-img"
-          // src: `../img/${product.id}.jpg`,
+          "class": "product-img",
+          src: "img/".concat(product.id, ".png")
         }, "", productElement);
         var titleElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("h4", {
           "class": "product-title"
@@ -783,12 +821,10 @@ function displayProductsByCategory(categoryId) {
         priceElement1.addEventListener("click", function () {
           product.size = priceElement1.textContent;
           displayProductDetails(product);
-          addToppings();
         });
         priceElement2.addEventListener("click", function () {
           product.size = priceElement1.textContent;
           displayProductDetails(product);
-          addToppings();
         });
         productElement.appendChild(imgElement);
         productElement.appendChild(titleElement);
@@ -808,15 +844,18 @@ function displayProductsByCategory(categoryId) {
   });
 }
 function displayProductDetails(product) {
-  $products.innerHTML = "";
+  $products.style.display = "none";
+  $info.style.display = "flex";
+  $info.innerHTML = "";
   var titleElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("h2", {
     "class": "product-title"
   }, product.name);
   var descriptionElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("p", {
     "class": "product-size"
   }, product.size);
-  $products.appendChild(titleElement);
-  $products.appendChild(descriptionElement);
+  addToppings();
+  $info.appendChild(titleElement);
+  $info.appendChild(descriptionElement);
 }
 function addToppings() {
   fetch(_urls__WEBPACK_IMPORTED_MODULE_1__.API_TOPPINGS_LIST).then(function (res) {
@@ -827,15 +866,40 @@ function addToppings() {
     try {
       for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
         var topping = _step3.value;
-        var cardElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("div", {
-          "class": "card"
-        });
-        var titleElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("h3", {
+        var _toppings = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("div", {
+          "class": "toppings"
+        }, "", $info);
+        var toppingElement = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("h3", {
           "class": "title"
-        }, topping.name);
-        cardElement.addEventListener("click", function () {});
-        cardElement.appendChild(titleElement);
-        $products.appendChild(cardElement);
+        }, "".concat(topping.name, " - ").concat(topping.price, "\u20B4"), _toppings);
+        var checkbox = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("input", {
+          "class": "check",
+          type: "checkbox",
+          name: "c1",
+          id: "c2"
+        }, "", _toppings);
+        var label = (0,_helpers_domHelpers__WEBPACK_IMPORTED_MODULE_2__.createElement)("label", {
+          "for": "c2"
+        });
+
+        // checkbox.addEventListener("change", function (event) {
+        //   const toppingElement = event.target.parentElement
+        //     .querySelector(".item.add.name")
+        //     .innerText.toLowerCase();
+        //   if (this.checked) {
+        //     toppings.push(toppingElement);
+        //   } else {
+        //     const index = toppings.indexOf(toppingElement);
+        //     if (index !== -1) {
+        //       toppings.splice(index, 1);
+        //     }
+        //   }
+        // });
+
+        _toppings.appendChild(checkbox);
+        _toppings.appendChild(label);
+        _toppings.appendChild(toppingElement);
+        $info.appendChild(_toppings);
       }
     } catch (err) {
       _iterator3.e(err);

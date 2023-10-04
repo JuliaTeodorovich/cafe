@@ -15,7 +15,7 @@ body {
   p {
     font-size: 90%;
     margin: 4px;
-  }  
+  }
 }
 
 main {
@@ -92,4 +92,52 @@ main {
 .title,
 .product-price {
   cursor: pointer;
+}
+
+.topp {
+  font-size: 90%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.block-toppings {
+  margin-top: 30px;
+}
+
+.toppings {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+[id^="c"] {
+  display: none;
+}
+[id^="c"] + label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid green;
+  margin-left: 10px;
+  text-align: center;
+}
+[id^="c"] + label:before {
+  content: "\2713";
+  display: inline-block;
+  color: green;
+  font-size: 20px;
+  line-height: 20px;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+[id^="c"]:checked + label:before {
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }

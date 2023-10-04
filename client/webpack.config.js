@@ -28,12 +28,13 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            outputPath: 'img/',
+            outputPath: path.resolve(__dirname, "dist/img"),
+            // outputPath: "img", 
           },
         },
       },
@@ -57,7 +58,7 @@ module.exports = {
     compress: true,
     port: process.env.BROWSER,
     liveReload: true,
-    https: true,
+    // https: true,
   },
   performance: {
     hints: false,

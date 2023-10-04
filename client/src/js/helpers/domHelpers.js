@@ -25,4 +25,3 @@ export function createElement(
   return element;
 }
 
-// export function createCheckoutForm() {}

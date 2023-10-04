@@ -53,8 +53,8 @@
     {
       "name": "Hamburger",
       "id": "hamburger",
-      "price_small": 200,
-      "price_big": 250,
+      "price_small": 50,
+      "price_big": 60,
       "size": "",
       "toppings": [{}, {}]
     },
