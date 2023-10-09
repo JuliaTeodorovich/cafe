@@ -28,8 +28,8 @@ main {
 
 .header {
   color: grey;
-  margin: 50px;
-  font-size: 50px;
+  margin: 40px;
+  font-size: 40px;
 }
 
 .categories {
@@ -42,6 +42,7 @@ main {
   align-items: center;
   justify-content: center;
   width: 25%;
+  height: 35px;
   margin: 3px;
   background-color: rgb(223, 228, 212);
   &:hover {
@@ -56,7 +57,7 @@ main {
 .products {
   width: 70%;
   max-width: 720px;
-  margin-top: 50px;
+  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
@@ -106,7 +107,7 @@ main {
 }
 
 .block-toppings {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .toppings {

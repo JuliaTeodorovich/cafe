@@ -5,22 +5,46 @@ import {
   API_TOPPINGS_LIST,
 } from "./urls";
 import { createElement } from "./helpers/domHelpers";
+import { Product } from "./constructor";
+
+const size = "";
+const topping = [];
+
+function createProductAndCalculate(size, topping) {
+  const myProduct = new Product(size, topping);
+  const price = myProduct.calculatePrice();
+  const toppings = myProduct.addTopping();
+  console.log(
+    `You chose: ${myProduct.size} with addition${toppings}.`
+  );
+  console.log(`Price: ${price}$.`);
+}
+createProductAndCalculate(size, topping);
 
 const $categories = document.querySelector(".categories");
 const $products = document.querySelector(".products");
 const $info = document.querySelector(".info");
 // const $cart = document.querySelector(".cart");
 
+const $totalPrice = createElement(
+  "h3",
+  { class: "total-price" },
+  `Total price: `,
+  $info
+);
+
 fetch(API_CATEGORIES_LIST)
   .then((res) => res.json())
   .then((categories) => {
+    $info.style.display = "none";
     let currentlyActiveCard = null;
     for (let category of categories) {
       const cardElement = createElement("div", { class: "card" });
       const titleElement = createElement(
         "h3",
         { class: "title" },
-        category.name
+        category.name,
+        cardElement
       );
       cardElement.addEventListener("click", () => {
         if (currentlyActiveCard) {
@@ -56,7 +80,8 @@ function displayProductsByCategory(categoryId) {
           "img",
           {
             class: "product-img",
-            // src: `img/${product.id}.png`,
+            // src: `../img/${product.id}.png`,
+            src: `../img/americana.png`,
           },
           "",
           productElement
@@ -87,11 +112,13 @@ function displayProductsByCategory(categoryId) {
         );
         priceElement1.addEventListener("click", () => {
           product.size = priceElement1.textContent;
+          createProductAndCalculate(product.price_small, []);
           displayProductDetails(product);
         });
 
         priceElement2.addEventListener("click", () => {
-          product.size = priceElement1.textContent;
+          product.size = priceElement2.textContent;
+          createProductAndCalculate(product.price_big, []);
           displayProductDetails(product);
         });
 
@@ -144,6 +171,8 @@ function addToppings() {
     .then((res) => res.json())
     .then((toppings) => {
       let counter = 1;
+      let selectedToppings = [];
+
       for (let topping of toppings) {
         const toppings = createElement("div", { class: "toppings" }, "", $info);
         const toppingElement = createElement(
@@ -170,22 +199,25 @@ function addToppings() {
 
         checkbox.addEventListener("change", function () {
           console.log(topping.price);
-          // .querySelector(".item.add.name")
-          // .innerText.toLowerCase();
-          // if (this.checked) {
-          //   toppings.push(toppingElement);
-          // } else {
-          //   const index = toppings.indexOf(toppingElement);
-          //   if (index !== -1) {
-          //     toppings.splice(index, 1);
-          //   }
-          // }
+          if (this.checked) {
+            const selectedTopping = topping.price;
+            selectedToppings.push(selectedTopping);
+          } else {
+            const index = selectedToppings.indexOf(topping.price);
+            if (index !== -1) {
+              selectedToppings.splice(index, 1);
+            }
+          }
+          const totalPrice = createProductAndCalculate(200, selectedToppings);
+          console.log(selectedToppings);
+          $totalPrice.textContent = `Total Price: ${totalPrice}₴`;
         });
+
         toppings.appendChild(toppingElement);
         toppings.appendChild(checkbox);
         toppings.appendChild(label);
         $info.appendChild(toppings);
-
+        $info.appendChild($totalPrice);
         counter++;
       }
     });

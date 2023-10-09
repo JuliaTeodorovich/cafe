@@ -11,10 +11,14 @@ module.exports = {
   devtool: "source-map",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.join(__dirname, "dist"),
   },
   module: {
     rules: [
+      {
+        test: /\.(html)$/,
+        use: ["html-loader"],
+      },
       { test: /\.scss$/, use: ["style-loader", "css-loader", "sass-loader"] },
       {
         test: /\.js$/,
@@ -33,8 +37,8 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            outputPath: path.resolve(__dirname, "dist/img"),
-            // outputPath: "img", 
+            outputPath: "img/",
+            // outputPath: path.resolve(__dirname, "dist/img"),
           },
         },
       },
