@@ -3,7 +3,7 @@ export function createElement(
   attributes,
   content,
   eventHandlers,
-  parent,
+  parent
 ) {
   const element = document.createElement(tagName);
   if (attributes) {
@@ -24,4 +24,3 @@ export function createElement(
   }
   return element;
 }
-
