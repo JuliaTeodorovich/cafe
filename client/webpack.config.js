@@ -1,17 +1,24 @@
 const path = require("path");
+const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
+require("dotenv").config({ path: ".env" });
+
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: "./src/js/app.js",
   devtool: "source-map",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.join(__dirname, "dist"),
   },
   module: {
     rules: [
+      {
+        test: /\.(html)$/,
+        use: ["html-loader"],
+      },
       { test: /\.scss$/, use: ["style-loader", "css-loader", "sass-loader"] },
       {
         test: /\.js$/,
@@ -24,9 +31,21 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "img/",
+            // outputPath: path.resolve(__dirname, "dist/img"),
+          },
+        },
+      },
     ],
   },
   plugins: [
+    new webpack.EnvironmentPlugin(["PORT"]),
     new ESLintPlugin(),
     new HTMLWebpackPlugin({
       template: "./src/index.html",
@@ -41,9 +60,9 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     compress: true,
-    port: 3000,
+    port: process.env.BROWSER,
     liveReload: true,
-    https: true,
+    // https: true,
   },
   performance: {
     hints: false,
