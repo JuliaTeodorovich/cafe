@@ -13,18 +13,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.get("/api/categories", function (request, response) {
-  response.send(200, categories);
+app.get("/api/categories", function (req, res) {
+  res.send(200, categories);
 });
 
-app.get("/api/products/:category", function (request, response) {
-  const category = request.params.category;
+app.get("/api/products/:category", function (req, res) {
+  const category = req.params.category;
   const productsByCategory = products[category] || [];
-  response.send(200, productsByCategory);
+  res.send(200, productsByCategory);
 });
 
-app.get("/api/toppings", function (request, response) {
-  response.send(200, toppings);
+app.get("/api/toppings", function (req, res) {
+  res.send(200, toppings);
 });
 
 app.post("/api/cart", (req, res) => {
@@ -38,8 +38,13 @@ app.post("/api/cart", (req, res) => {
   }
 });
 
-app.get("/api/cart", function (request, response) {
-  response.send(200, cart);
+app.get("/api/cart", function (req, res) {
+  res.send(200, cart);
+});
+
+app.delete("/api/cart", (req, res) => {
+  cart = [];
+  res.send(200, cart);
 });
 
 app.delete("/api/cart/:token", (req, res) => {
