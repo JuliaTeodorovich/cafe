@@ -7,7 +7,6 @@ import {
 } from "./urls";
 import { createElement } from "./helpers/domHelpers";
 import { Product } from "./helpers/constructor";
-import { productImages } from "./imgs";
 
 const $main = document.querySelector("main");
 const $categories = document.querySelector(".categories");
@@ -16,32 +15,38 @@ const $info = document.querySelector(".info");
 const $price = document.querySelector(".price");
 const $totalPrice = document.querySelector(".total-price");
 const $btnAdd = document.querySelector(".btn-add");
+$btnAdd.style.background = "rgb(223, 228, 212)";
+$btnAdd.style.pointerEvents = "all";
 const $cart = document.querySelector(".cart");
 const cartIcon = document.querySelector(".fa");
+const clearCart = createElement(
+  "div",
+  { class: "clear card" },
+  "Clear all",
+  $cart
+);
 const cross = createElement("div", { class: "cross" }, "", $cart);
-cross.style.display = "none";
-cross.addEventListener("click", () => {
-  $categories.style.display = "flex";
-  cross.style.display = "none";
-  order.style.display = "none";
-  $cart.style.justifyContent = "end";
-});
-$cart.appendChild(cross);
 const order = createElement("div", { class: "order card" }, "", $cart);
 const orderText = createElement("h3", "", `Your order: `, order);
 const listCart = createElement("ul", { class: "list-group" }, "", order);
 const total = createElement("h3", { class: "total" }, "", order);
-let cart = [];
+
+clearCart.style.display = "none";
+cross.style.display = "none";
 order.style.display = "none";
 $price.style.display = "none";
-productImages;
+
+$cart.appendChild(clearCart);
+$cart.appendChild(cross);
+
+let cart = [];
+let selectedProduct = null;
 let selectedToppings = [];
 let selectedToppingsPrice = [];
 const cartItems = [];
 const chosenProducts = [];
 let productPrice = 0;
 let currentlyActiveCard = null;
-let productToken = "";
 
 cartIcon.addEventListener("click", () => {
   $categories.style.display = "none";
@@ -53,9 +58,23 @@ cartIcon.addEventListener("click", () => {
   $price.style.display = "none";
   order.style.display = "flex";
   $cart.style.justifyContent = "space-between";
+  clearCart.style.display = "flex";
   cross.style.display = "flex";
   listCart.innerHTML = "";
   displayCart(cart);
+});
+
+cross.addEventListener("click", () => {
+  $categories.style.display = "flex";
+  cross.style.display = "none";
+  order.style.display = "none";
+  $cart.style.justifyContent = "end";
+  clearCart.style.display = "none";
+});
+
+clearCart.addEventListener("click", () => {
+  clearCart.style.display = "none";
+  deleteAllCart();
 });
 
 function createProductAndCalculate(product, toppings) {
@@ -103,7 +122,11 @@ function displayProductsByCategory(categoryId) {
       $products.style.display = "grid";
       $info.style.display = "none";
       $price.style.display = "none";
-
+      $btnAdd.style.background = "rgb(223, 228, 212)";
+      $btnAdd.style.pointerEvents = "all";
+      selectedProduct = null;
+      selectedToppings = [];
+      selectedToppingsPrice = [];
       for (let product of products) {
         const productElement = createElement(
           "div",
@@ -166,19 +189,15 @@ function displayProductsByCategory(categoryId) {
 }
 
 function handleSizeSelection(product, categoryId) {
+  selectedProduct = product;
   if (categoryId !== "beverages") {
     addToppings(product);
   }
-  switch (product.size) {
-    case "small":
-      createProductAndCalculate(product.small, selectedToppingsPrice);
-      break;
-    case "big":
-      createProductAndCalculate(product.big, selectedToppingsPrice);
-      break;
-  }
+  createProductAndCalculate(
+    product.size === "small" ? product.small : product.big,
+    selectedToppingsPrice
+  );
   displayProductDetails(product, categoryId);
-  add(product);
 }
 
 function displayProductDetails(product, categoryId) {
@@ -280,28 +299,32 @@ function addToppings(product) {
     });
 }
 
-function add(product, quantity) {
-  quantity = 1;
-  $btnAdd.style.background = "rgb(223, 228, 212)";
-  $btnAdd.style.pointerEvents = "all";
-  $btnAdd.addEventListener("click", () => {
-    $btnAdd.innerHTML = "Successfully added";
-    $btnAdd.style.background = "#56ce68";
-    $btnAdd.style.pointerEvents = "none";
-    $info.innerHTML = `${product.name}`;
-    product.token = generateToken();
-    const existingProduct = chosenProducts.find(
-      (item) => item.token === product.token
-    );
-    if (!existingProduct) {
-      product.toppings = selectedToppings;
-      product.price = productPrice;
-      chosenProducts.push(product);
-      cartItems.push({ product, quantity });
-      sendProductToServer(product);
-      fetchAndDisplayCartData();
-    }
-  });
+$btnAdd.addEventListener("click", () => {
+  $btnAdd.innerHTML = "Successfully added";
+  $btnAdd.style.background = "#56ce68";
+  $btnAdd.style.pointerEvents = "none";
+  add(selectedProduct);
+});
+
+function add(product) {
+  const quantity = 1;
+
+  $info.innerHTML = `${product.name}`;
+  product.token = generateToken();
+  const existingProduct = chosenProducts.find(
+    (item) => item.token === product.token
+  );
+  if (!existingProduct) {
+    product.toppings = selectedToppings;
+    product.price = productPrice;
+    selectedProduct = product;
+    chosenProducts.push(product);
+    cartItems.push({ product, quantity });
+    sendProductToServer(selectedProduct);
+    selectedToppings = [];
+    selectedToppingsPrice = [];
+    fetchAndDisplayCartData();
+  }
 }
 
 function generateToken() {
@@ -353,6 +376,7 @@ function displayCart(cart) {
   value = cartIcon.getAttribute("value");
   if (parseInt(value) === 0) {
     order.innerHTML = "No products added";
+    clearCart.style.display = "none";
     orderText.style.display = "none";
     listCart.style.display = "none";
     total.style.display = "none";
@@ -375,9 +399,9 @@ function displayCart(cart) {
         "",
         itemOfCart
       );
-      productToken = itemCart.token;
+      const productToken = itemCart.token;
       deleteCartItem.addEventListener("click", () => {
-        deleteItemCart();
+        deleteItemCart(productToken);
       });
       itemOfCart.appendChild(deleteCartItem);
       listCart.appendChild(itemOfCart);
@@ -391,19 +415,32 @@ function displayCart(cart) {
   $main.appendChild(order);
 }
 
-function deleteItemCart() {
-  fetch(`${API_CART_LIST}/${productToken}`, {
+function deleteItemCart(token) {
+  fetch(`${API_CART_LIST}/${token}`, {
     method: "DELETE",
   })
     .then((response) => {
       if (response.ok) {
         fetchAndDisplayCartData();
-      } else {
-        console.error(`Помилка видалення продукта.`);
       }
     })
     .catch((error) => {
       console.error("Помилка: " + error);
     });
 }
+
+function deleteAllCart() {
+  fetch(API_CART_LIST, {
+    method: "DELETE",
+  })
+    .then((response) => {
+      if (response.ok) {
+        fetchAndDisplayCartData();
+      }
+    })
+    .catch((error) => {
+      console.error("Помилка: " + error);
+    });
+}
+
 fetchAndDisplayCartData();
