@@ -7,9 +7,7 @@ import {
 } from "./urls";
 import { createElement } from "./helpers/domHelpers";
 import { Product } from "./helpers/constructor";
-import { productImages } from "./imgs";
 
-productImages;
 const $main = document.querySelector("main");
 const $categories = document.querySelector(".categories");
 const $products = document.querySelector(".products");
