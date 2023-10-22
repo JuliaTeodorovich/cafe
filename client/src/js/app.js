@@ -7,18 +7,49 @@ import {
 } from "./urls";
 import { createElement } from "./helpers/domHelpers";
 import { Product } from "./helpers/constructor";
+import { productImages } from "./imgs";
 
-const $main = document.querySelector("main");
-const $categories = document.querySelector(".categories");
-const $products = document.querySelector(".products");
-const $info = document.querySelector(".info");
-const $price = document.querySelector(".price");
-const $totalPrice = document.querySelector(".total-price");
-const $btnAdd = document.querySelector(".btn-add");
-$btnAdd.style.background = "rgb(223, 228, 212)";
-$btnAdd.style.pointerEvents = "all";
-const $cart = document.querySelector(".cart");
-const cartIcon = document.querySelector(".fa");
+const $app = document.getElementById("app");
+const $header = createElement(
+  "h1",
+  { class: "header" },
+  "FASTFOOD & CO.",
+  $app
+);
+const $categories = createElement(
+  "div",
+  { class: "container categories" },
+  "",
+  $app
+);
+const $products = createElement(
+  "div",
+  { class: "container products" },
+  "",
+  $app
+);
+const $info = createElement("div", { class: "container info" }, "", $app);
+const $price = createElement("div", { class: "container price" }, "", $app);
+const $priceTitle = createElement(
+  "h3",
+  { class: "priceTitle" },
+  "Total price:",
+  $price
+);
+const $totalPrice = createElement(
+  "span",
+  { class: "total-price" },
+  "",
+  $priceTitle
+);
+const $btnAdd = createElement("button", { class: "btn-add card" }, "", $price);
+const $cart = createElement("div", { class: "container cart" }, "", $app);
+const cartIcon = createElement(
+  "i",
+  { class: "fa badge fa-lg" },
+  "&#xf07a;",
+  $cart
+);
 const clearCart = createElement(
   "div",
   { class: "clear card" },
@@ -31,13 +62,18 @@ const orderText = createElement("h3", "", `Your order: `, order);
 const listCart = createElement("ul", { class: "list-group" }, "", order);
 const total = createElement("h3", { class: "total" }, "", order);
 
-clearCart.style.display = "none";
-cross.style.display = "none";
-order.style.display = "none";
-$price.style.display = "none";
-
+$app.appendChild($header);
+$app.appendChild($cart);
+$app.appendChild($categories);
+$app.appendChild($products);
+$app.appendChild($info);
+$app.appendChild($price);
+$cart.appendChild(cartIcon);
 $cart.appendChild(clearCart);
 $cart.appendChild(cross);
+$price.appendChild($priceTitle);
+$priceTitle.appendChild($totalPrice);
+$price.appendChild($btnAdd);
 
 let cart = [];
 let selectedProduct = null;
@@ -138,7 +174,7 @@ function displayProductsByCategory(categoryId) {
           "img",
           {
             class: "product-img",
-            src: `../img/${product.id}.png`,
+            src: productImages[product.number],
           },
           "",
           productElement
@@ -209,7 +245,7 @@ function displayProductDetails(product, categoryId) {
     "img",
     {
       class: "product-img",
-      src: `../img/${product.id}.png`,
+      src: productImages[product.number],
     },
     "",
     $info
@@ -399,6 +435,7 @@ function displayCart(cart) {
         "",
         itemOfCart
       );
+      deleteCartItem.style.display = "flex";
       const productToken = itemCart.token;
       deleteCartItem.addEventListener("click", () => {
         deleteItemCart(productToken);
@@ -412,7 +449,7 @@ function displayCart(cart) {
   order.appendChild(orderText);
   order.appendChild(listCart);
   order.appendChild(total);
-  $main.appendChild(order);
+  $app.appendChild(order);
 }
 
 function deleteItemCart(token) {

@@ -17,7 +17,7 @@ h3 {
   }
 }
 
-main,
+#app,
 .product,
 .info,
 .price,
@@ -28,7 +28,7 @@ main,
   margin-bottom: 10px;
 }
 
-main {
+#app {
   flex-direction: column;
   width: 80%;
   margin: 0 auto;
@@ -142,6 +142,7 @@ main {
   transform: scale(1);
 }
 .price {
+  display: none;
   margin: 0;
   flex-direction: column;
 }
@@ -180,7 +181,7 @@ main {
 }
 
 .cross {
-  display: flex;
+  display: none;
   align-self: center;
   cursor: pointer;
   margin: 0;
@@ -211,7 +212,12 @@ main {
   }
 }
 
+.clear {
+  display: none;
+}
+
 .order {
+  display: none;
   width: 700px;
   height: auto;
 }
@@ -220,4 +226,9 @@ main {
   width: 400px;
   display: flex;
   justify-content: space-between;
+}
+
+.btn-add {
+  background: "rgb(223, 228, 212)";
+  pointer-events: "all";
 }
