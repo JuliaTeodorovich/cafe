@@ -1,9 +1,9 @@
 {
   "pizza": [
     {
-      "number": 0,
+      "id": 0,
       "name": "Margarita",
-      "id": "margarita",
+      "slug": "margarita",
       "small": 200,
       "big": 250,
       "size": "",
@@ -11,9 +11,9 @@
       "toppings": []
     },
     {
-      "number": 1,
+      "id": 1,
       "name": "Napoletana",
-      "id": "napoletana",
+      "slug": "napoletana",
       "small": 250,
       "big": 320,
       "size": "",
@@ -21,9 +21,9 @@
       "toppings": []
     },
     {
-      "number": 2,
+      "id": 2,
       "name": "Vegetariana",
-      "id": "vegetariana",
+      "slug": "vegetariana",
       "small": 180,
       "big": 220,
       "size": "",
@@ -31,9 +31,9 @@
       "toppings": []
     },
     {
-      "number": 3,
+      "id": 3,
       "name": "Americana",
-      "id": "americana",
+      "slug": "americana",
       "small": 210,
       "big": 260,
       "size": "",
@@ -41,9 +41,9 @@
       "toppings": []
     },
     {
-      "number": 4,
+      "id": 4,
       "name": "Four Cheese",
-      "id": "fourcheese",
+      "slug": "fourcheese",
       "small": 240,
       "big": 310,
       "size": "",
@@ -51,9 +51,9 @@
       "toppings": []
     },
     {
-      "number": 5,
+      "id": 5,
       "name": "Siciliana",
-      "id": "siciliana",
+      "slug": "siciliana",
       "small": 230,
       "big": 300,
       "size": "",
@@ -63,9 +63,9 @@
   ],
   "burgers": [
     {
-      "number": 6,
+      "id": 6,
       "name": "Hamburger",
-      "id": "hamburger",
+      "slug": "hamburger",
       "small": 50,
       "big": 60,
       "size": "",
@@ -73,9 +73,9 @@
       "toppings": []
     },
     {
-      "number": 7,
+      "id": 7,
       "name": "Cheeseburger",
-      "id": "cheeseburger",
+      "slug": "cheeseburger",
       "small": 60,
       "big": 70,
       "size": "",
@@ -83,9 +83,9 @@
       "toppings": []
     },
     {
-      "number": 8,
+      "id": 8,
       "name": "Fishburger",
-      "id": "fishburger",
+      "slug": "fishburger",
       "small": 65,
       "big": 75,
       "size": "",
@@ -93,9 +93,9 @@
       "toppings": []
     },
     {
-      "number": 9,
+      "id": 9,
       "name": "Chickenburger",
-      "id": "chickenburger",
+      "slug": "chickenburger",
       "small": 55,
       "big": 65,
       "size": "",
@@ -103,9 +103,9 @@
       "toppings": []
     },
     {
-      "number": 10,
+      "id": 10,
       "name": "Blackburger",
-      "id": "blackburger",
+      "slug": "blackburger",
       "small": 70,
       "big": 80,
       "size": "",
@@ -113,9 +113,9 @@
       "toppings": []
     },
     {
-      "number": 11,
+      "id": 11,
       "name": "Doubleburger",
-      "id": "doubleburger",
+      "slug": "doubleburger",
       "small": 85,
       "big": 100,
       "size": "",
@@ -125,9 +125,9 @@
   ],
   "doner": [
     {
-      "number": 12,
+      "id": 12,
       "name": "Doner",
-      "id": "doner",
+      "slug": "doner",
       "small": 60,
       "big": 80,
       "size": "",
@@ -135,9 +135,9 @@
       "toppings": []
     },
     {
-      "number": 13,
+      "id": 13,
       "name": "Doner kebab",
-      "id": "donerkebab",
+      "slug": "donerkebab",
       "small": 70,
       "big": 90,
       "size": "",
@@ -145,9 +145,9 @@
       "toppings": []
     },
     {
-      "number": 14,
+      "id": 14,
       "name": "Burrito",
-      "id": "burrito",
+      "slug": "burrito",
       "small": 70,
       "big": 90,
       "size": "",
@@ -155,9 +155,9 @@
       "toppings": []
     },
     {
-      "number": 15,
+      "id": 15,
       "name": "Tacos",
-      "id": "tacos",
+      "slug": "tacos",
       "small": 80,
       "big": 100,
       "size": "",
@@ -165,9 +165,9 @@
       "toppings": []
     },
     {
-      "number": 16,
+      "id": 16,
       "name": "Gyros",
-      "id": "gyros",
+      "slug": "gyros",
       "small": 80,
       "big": 100,
       "size": "",
@@ -175,9 +175,9 @@
       "toppings": []
     },
     {
-      "number": 17,
+      "id": 17,
       "name": "Cheese Pita",
-      "id": "cheesepita",
+      "slug": "cheesepita",
       "small": 40,
       "big": 50,
       "size": "",
@@ -187,54 +187,54 @@
   ],
   "beverages": [
     {
-      "number": 18,
+      "id": 18,
       "name": "Coca-cola",
-      "id": "cola",
+      "slug": "cola",
       "small": 15,
       "big": 25,
       "size": "",
       "price": 0
     },
     {
-      "number": 19,
+      "id": 19,
       "name": "Fanta",
-      "id": "fanta",
+      "slug": "fanta",
       "small": 15,
       "big": 25,
       "size": "",
       "price": 0
     },
     {
-      "number": 20,
+      "id": 20,
       "name": "Mojito",
-      "id": "mojito",
+      "slug": "mojito",
       "small": 25,
       "big": 40,
       "size": "",
       "price": 0
     },
     {
-      "number": 21,
+      "id": 21,
       "name": "Juice",
-      "id": "juice",
+      "slug": "juice",
       "small": 20,
       "big": 30,
       "size": "",
       "price": 0
     },
     {
-      "number": 22,
+      "id": 22,
       "name": "Water",
-      "id": "water",
+      "slug": "water",
       "small": 10,
       "big": 15,
       "size": "",
       "price": 0
     },
     {
-      "number": 23,
+      "id": 23,
       "name": "Latte",
-      "id": "latte",
+      "slug": "latte",
       "small": 35,
       "big": 50,
       "size": "",

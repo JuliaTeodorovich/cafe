@@ -174,7 +174,7 @@ function displayProductsByCategory(categoryId) {
           "img",
           {
             class: "product-img",
-            src: productImages[product.number],
+            src: productImages[product.id],
           },
           "",
           productElement
@@ -245,7 +245,7 @@ function displayProductDetails(product, categoryId) {
     "img",
     {
       class: "product-img",
-      src: productImages[product.number],
+      src: productImages[product.id],
     },
     "",
     $info
