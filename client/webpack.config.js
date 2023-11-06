@@ -38,7 +38,6 @@ module.exports = {
           options: {
             name: "[name].[ext]",
             outputPath: "img/",
-            // outputPath: path.resolve(__dirname, "dist/img"),
           },
         },
       },
